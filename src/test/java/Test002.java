@@ -40,7 +40,6 @@ public class Test002 {
             System.out.println(beanDefinitionName);
         }
 
+        applicationContext.close();
     }
-
-
 }
