@@ -3,6 +3,7 @@ import com.liuwq.config.MySpringConfig;
 import com.liuwq.controller.UserController;
 import com.liuwq.entity.MemberEntity;
 import com.liuwq.entity.UserEntity;
+import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -34,6 +35,9 @@ public class Test002 {
         MemberEntity memberEntity = applicationContext.getBean("myFactoryBean", MemberEntity.class);
         MemberEntity memberEntity2 = applicationContext.getBean("myFactoryBean", MemberEntity.class);
         System.out.println("memberEntity:" + (memberEntity == memberEntity2));
+
+        AnnotationAwareAspectJAutoProxyCreator annotationAwareAspectJAutoProxyCreator = applicationContext.getBean("org.springframework.aop.config.internalAutoProxyCreator", AnnotationAwareAspectJAutoProxyCreator.class);
+        System.out.println("annotationAwareAspectJAutoProxyCreator:" + annotationAwareAspectJAutoProxyCreator);
 
         String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {

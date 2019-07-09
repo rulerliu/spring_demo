@@ -13,6 +13,7 @@ import org.springframework.context.annotation.*;
 //@ComponentScan(basePackages = "com.liuwq", excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Service.class)}, useDefaultFilters = true)
 @Import(value = {ImportEntity.class, MyImportBeanDefinitionRegistrar.class})
 @EnableImportSelector
+@EnableAspectJAutoProxy
 public class MySpringConfig {
 
     /**
