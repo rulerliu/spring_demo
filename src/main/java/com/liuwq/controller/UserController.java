@@ -9,6 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 
+import javax.annotation.PostConstruct;
+
 /**
  * @description:
  * @author: liuwq
@@ -26,7 +28,15 @@ public class UserController implements BeanNameAware, BeanFactoryAware, Initiali
     private PayService payService;
 
     public UserController() {
-        System.out.println(">>>UserController...");
+        System.out.println(">>>UserController...Construct");
+    }
+
+    /**
+     * 该方法在构造方法之后，初始化方法之前，执行
+     */
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println(">>>>UserController postConstruct...");
     }
 
     public String test() {
@@ -48,9 +58,13 @@ public class UserController implements BeanNameAware, BeanFactoryAware, Initiali
         System.out.println("applicationContext:" + applicationContext);
     }
 
+    /**
+     * 初始化方法
+     * @throws Exception
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println(">>>afterPropertiesSet");
+        System.out.println(">>>afterPropertiesSet...init");
     }
 
     @Override
