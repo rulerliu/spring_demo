@@ -3,6 +3,8 @@ import com.liuwq.config.MySpringConfig;
 import com.liuwq.controller.UserController;
 import com.liuwq.entity.MemberEntity;
 import com.liuwq.entity.UserEntity;
+import com.liuwq.service.UserService;
+import com.liuwq.service.impl.UserServiceImpl01;
 import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -45,5 +47,6 @@ public class Test002 {
         }
 
         applicationContext.close();
+        System.out.println(UserService.class.isAssignableFrom(UserServiceImpl01.class));
     }
 }

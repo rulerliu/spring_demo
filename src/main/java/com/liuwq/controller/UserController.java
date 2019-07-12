@@ -1,10 +1,10 @@
 package com.liuwq.controller;
 
+import com.liuwq.service.PayService;
 import com.liuwq.service.UserService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
@@ -19,15 +19,18 @@ import org.springframework.stereotype.Controller;
 public class UserController implements BeanNameAware, BeanFactoryAware, InitializingBean, DisposableBean, ApplicationContextAware {
 
     @Autowired
-    @Qualifier("userServiceImpl02")
+//    @Qualifier("userServiceImpl02")
     private UserService userService;
+
+    @Autowired
+    private PayService payService;
 
     public UserController() {
         System.out.println(">>>UserController...");
     }
 
     public String test() {
-        return userService.test();
+        return ">>>test>>>:" +  payService.test() + userService.test();
     }
 
     @Override
